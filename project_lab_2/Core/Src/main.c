@@ -227,29 +227,6 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-const int MAX_LED = 4;
-int index_led = 0;
-int led_buffer [4] = {1 , 2 , 3 , 4};
-void update7SEG ( int index )
-{
-	switch ( index )
-	{
-		case 0:
-			// Display the first 7 SEG with led_buffer [0]
-			break ;
-		case 1:
-			// Display the second 7 SEG with led_buffer [1]
-			break ;
-		case 2:
-		 // Display the third 7 SEG with led_buffer [2]
-			break ;
-		case 3:
-		 // Display the forth 7 SEG with led_buffer [3]
-			break ;
-		default :
-			break ;
-	 }
-}
 void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim )
 {
 
