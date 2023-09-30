@@ -50,6 +50,7 @@ TIM_HandleTypeDef htim2;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_TIM2_Init(void);
+void display7SEG(int num);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
