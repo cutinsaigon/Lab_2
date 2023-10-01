@@ -116,7 +116,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   int hour = 15 , minute = 8 , second = 50;
 
-  setTimer0 (1000) ;
+  setTimer0 (10);
 
   while (1)
   {
@@ -139,6 +139,7 @@ int main(void)
     	hour = 0;
     }
     updateClockBuffer(hour, minute);
+    HAL_Delay(1000);
 
     if( timer0_flag == 1)
     {
@@ -458,6 +459,7 @@ int index_led = 0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   timer_run();
+
   counter--;
   if (counter <= 0)
   {
@@ -468,6 +470,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       index_led = 0;
     }
   }
+  
   counter1--;
   if (counter1 <= 0)
   {
