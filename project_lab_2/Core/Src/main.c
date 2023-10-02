@@ -98,22 +98,7 @@ void timer_run1()
   }
 }
 /////////////////////////////
-//TIMER 2 for update7SEG()
-void setTimer2(int duration)
-{
-  timer2_counter = duration / TIMER_CYCLE;
-  timer2_flag = 0;
-}
-void timer_run2()
-{
-  if (timer2_counter > 0)
-  {
-     timer2_counter--;
-     if (timer2_counter == 0)
-       timer2_flag = 1;
-  }
-}
-/////////////////////////////
+
 /* USER CODE END 0 */
 
 /**
@@ -157,8 +142,7 @@ int main(void)
 
   setTimer0(1000);
   setTimer1(1000);
-  setTimer2(250);
-  int index_led = 0;
+
 
   while (1)
   {
@@ -194,16 +178,7 @@ int main(void)
 
        setTimer1(1000);
     }
-    //TODO for timer2
-    if(timer2_flag == 1)
-    {
-       update7SEG(index_led++);
-       if (index_led > 3)
-       {
-         index_led = 0;
-       }
-       setTimer2(250);
-    }
+
 
   }
   /* USER CODE END 3 */
@@ -512,25 +487,25 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-// int counter = 25;
+ int counter = 25;
 // int counter1 = 100;
-// int index_led = 0;
+ int index_led = 0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   timer_run0();
   timer_run1();
-  timer_run2();
+//  timer_run2();
 
-  // counter--;
-  // if (counter <= 0)
-  // {
-  //   counter = 25;
-  //   update7SEG(index_led++);
-  //   if (index_led > 3)
-  //   {
-  //     index_led = 0;
-  //   }
-  // }
+   counter--;
+   if (counter <= 0)
+   {
+     counter = 25;
+     update7SEG(index_led++);
+     if (index_led > 3)
+     {
+       index_led = 0;
+     }
+   }
   
   // counter1--;
   // if (counter1 <= 0)
