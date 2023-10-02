@@ -131,7 +131,7 @@ int led_buffer[4] = {0, 0, 0, 0};
 void updateClockBuffer(int h, int m)
 {
 
-  if (m <= 10)
+  if (m <= 9)
   {
     led_buffer[3] = m;
     led_buffer[2] = 0;
@@ -141,7 +141,7 @@ void updateClockBuffer(int h, int m)
     led_buffer[3] = m % 10;
     led_buffer[2] = m / 10;
   }
-  if (h <= 10)
+  if (h <= 9)
   {
     led_buffer[1] = h;
     led_buffer[0] = 0;
