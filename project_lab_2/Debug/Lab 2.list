@@ -283,9 +283,9 @@ void updateClockBuffer(int h, int m)
  8000256:	6078      	str	r0, [r7, #4]
  8000258:	6039      	str	r1, [r7, #0]
 
-  if (m <= 10)
+  if (m <= 9)
  800025a:	683b      	ldr	r3, [r7, #0]
- 800025c:	2b0a      	cmp	r3, #10
+ 800025c:	2b09      	cmp	r3, #9
  800025e:	dc06      	bgt.n	800026e <updateClockBuffer+0x1e>
   {
     led_buffer[3] = m;
@@ -324,9 +324,9 @@ void updateClockBuffer(int h, int m)
  8000298:	4a13      	ldr	r2, [pc, #76]	; (80002e8 <updateClockBuffer+0x98>)
  800029a:	6093      	str	r3, [r2, #8]
   }
-  if (h <= 10)
+  if (h <= 9)
  800029c:	687b      	ldr	r3, [r7, #4]
- 800029e:	2b0a      	cmp	r3, #10
+ 800029e:	2b09      	cmp	r3, #9
  80002a0:	dc06      	bgt.n	80002b0 <updateClockBuffer+0x60>
   {
     led_buffer[1] = h;
