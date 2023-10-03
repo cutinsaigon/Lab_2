@@ -160,7 +160,6 @@ int main(void)
 
   int index_led = 0;
 
-
   while (1)
   {
     /* USER CODE END WHILE */
