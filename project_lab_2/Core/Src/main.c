@@ -176,7 +176,7 @@ int main(void)
   setTimer0(1000);
   setTimer1(1000);
   setTimer2(250);
-  setTimer3(200);
+  setTimer3(10);
 
   int index_led = 0;
   int index_led_matrix = 0;
@@ -234,7 +234,7 @@ int main(void)
        {
          index_led_matrix = 0;
        }
-       setTimer3(200);
+       setTimer3(10);
     }
   }
   /* USER CODE END 3 */
@@ -616,16 +616,22 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, DOT_Pin|LED_RED_Pin|EN0_Pin|EN1_Pin
-                          |EN2_Pin|EN3_Pin, GPIO_PIN_RESET);
+                          |EN2_Pin|EN3_Pin|ENM0_Pin|ENM1_Pin
+						  |ENM2_Pin|ENM3_Pin|ENM4_Pin|ENM5_Pin
+						  |ENM6_Pin|ENM7_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, a_Pin|b_Pin|c_Pin|d_Pin
-                          |e_Pin|f_Pin|g_Pin, GPIO_PIN_RESET);
+                          |e_Pin|f_Pin|g_Pin|ROW0_Pin|ROW1_Pin
+						  |ROW2_Pin|ROW3_Pin|ROW4_Pin|ROW5_Pin
+						  |ROW6_Pin|ROW7_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : DOT_Pin LED_RED_Pin EN0_Pin EN1_Pin
                            EN2_Pin EN3_Pin */
   GPIO_InitStruct.Pin = DOT_Pin|LED_RED_Pin|EN0_Pin|EN1_Pin
-                          |EN2_Pin|EN3_Pin;
+          	  	  	  |EN2_Pin|EN3_Pin|ENM0_Pin|ENM1_Pin
+					  |ENM2_Pin|ENM3_Pin|ENM4_Pin|ENM5_Pin
+					  |ENM6_Pin|ENM7_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -634,7 +640,9 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pins : a_Pin b_Pin c_Pin d_Pin
                            e_Pin f_Pin g_Pin */
   GPIO_InitStruct.Pin = a_Pin|b_Pin|c_Pin|d_Pin
-                          |e_Pin|f_Pin|g_Pin;
+          	  	  	  |e_Pin|f_Pin|g_Pin|ROW0_Pin|ROW1_Pin
+					  |ROW2_Pin|ROW3_Pin|ROW4_Pin|ROW5_Pin
+					  |ROW6_Pin|ROW7_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
