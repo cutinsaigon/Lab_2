@@ -77,8 +77,8 @@ Disassembly of section .text:
  8000148:	08002488 	.word	0x08002488
 
 0800014c <setTimer0>:
-int timer3_flag = 0;
 int TIMER_CYCLE = 10;
+
 
 //TIMER 0 for toggle LED_RED
 void setTimer0( int duration )
@@ -403,8 +403,8 @@ int main(void)
   setTimer2(250);
  800032c:	20fa      	movs	r0, #250	; 0xfa
  800032e:	f7ff ff75 	bl	800021c <setTimer2>
-  setTimer3(10);
- 8000332:	200a      	movs	r0, #10
+  setTimer3(100);
+ 8000332:	2064      	movs	r0, #100	; 0x64
  8000334:	f7ff ffa6 	bl	8000284 <setTimer3>
 
   int index_led = 0;
@@ -540,8 +540,8 @@ int main(void)
  80003e6:	2300      	movs	r3, #0
  80003e8:	607b      	str	r3, [r7, #4]
        }
-       setTimer3(10);
- 80003ea:	200a      	movs	r0, #10
+       setTimer3(100);
+ 80003ea:	2064      	movs	r0, #100	; 0x64
  80003ec:	f7ff ff4a 	bl	8000284 <setTimer3>
     if (timer0_flag == 1)
  80003f0:	e7a6      	b.n	8000340 <main+0x54>
@@ -660,12 +660,12 @@ void updateClockBuffer(int h, int m)
  80004a8:	66666667 	.word	0x66666667
 
 080004ac <updateLEDMatrix>:
-//		break ;
-//	}
-//}
+// uint8_t matrix_buffer [8] = {0x01 , 0x02 , 0x03 , 0x04 , 0x05 , 0x06 , 0x07 , 0x08 };
 
 uint8_t matrix_buffer[8] = {0x00, 0xFC, 0xfe, 0x33, 0x33, 0xFE, 0xFC, 0x00};
-void updateLEDMatrix (int index ) {
+
+void updateLEDMatrix (int index )
+{
  80004ac:	b580      	push	{r7, lr}
  80004ae:	b082      	sub	sp, #8
  80004b0:	af00      	add	r7, sp, #0
