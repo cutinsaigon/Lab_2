@@ -54,6 +54,7 @@ void display7SEG(int num);
 void update7SEG(int index);
 void updateClockBuffer(int h, int m);
 void updateLEDMatrix (int index );
+void change_matrix_buffer();
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -69,7 +70,7 @@ int timer2_flag = 0;
 int timer3_counter = 0;
 int timer3_flag = 0;
 int TIMER_CYCLE = 10;
-
+uint8_t matrix_buffer[8] = {0x00, 0xFC, 0xfe, 0x33, 0x33, 0xFE, 0xFC, 0x00};
 
 //TIMER 0 for toggle LED_RED
 void setTimer0( int duration )
@@ -177,7 +178,7 @@ int main(void)
   setTimer0(1000);
   setTimer1(1000);
   setTimer2(250);
-  setTimer3(100);
+  setTimer3(500);
 
   int index_led = 0;
   int index_led_matrix = 0;
@@ -230,12 +231,14 @@ int main(void)
     //TODO for timer3
     if (timer3_flag == 1)
     {
-       updateLEDMatrix(index_led_matrix++);
+
        if (index_led_matrix > 7)
        {
+         change_matrix_buffer(matrix_buffer, 8);
          index_led_matrix = 0;
        }
-       setTimer3(100);
+       updateLEDMatrix(index_led_matrix++);
+       setTimer3(500);
     }
   }
   /* USER CODE END 3 */
@@ -270,8 +273,19 @@ const int MAX_LED_MATRIX = 8;
 
 // uint8_t matrix_buffer [8] = {0x01 , 0x02 , 0x03 , 0x04 , 0x05 , 0x06 , 0x07 , 0x08 };
 
-uint8_t matrix_buffer[8] = {0x00, 0xFC, 0xfe, 0x33, 0x33, 0xFE, 0xFC, 0x00};
 
+void change_matrix_buffer(){
+
+	int temp;
+	temp = matrix_buffer[0];
+	int var;
+	for(uint8_t i = 0; i<8; ++i){
+		var = matrix_buffer[i];
+		matrix_buffer[i] = matrix_buffer[i+1];
+		matrix_buffer[i + 1] = var;
+	}
+	matrix_buffer[7] = temp;
+}
 void updateLEDMatrix (int index )
 {
 	switch (index) {
