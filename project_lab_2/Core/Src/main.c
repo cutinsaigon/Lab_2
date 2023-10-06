@@ -234,7 +234,7 @@ int main(void)
 
        if (index_led_matrix > 7)
        {
-         change_matrix_buffer(matrix_buffer, 8);
+         change_matrix_buffer();
          index_led_matrix = 0;
        }
        updateLEDMatrix(index_led_matrix++);
@@ -273,9 +273,8 @@ const int MAX_LED_MATRIX = 8;
 
 // uint8_t matrix_buffer [8] = {0x01 , 0x02 , 0x03 , 0x04 , 0x05 , 0x06 , 0x07 , 0x08 };
 
-
-void change_matrix_buffer(){
-
+void change_matrix_buffer()
+{
 	int temp;
 	temp = matrix_buffer[0];
 	int var;
